@@ -14,6 +14,7 @@ from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 import time
 from urllib.parse import urljoin  # URLを結合するために必要
+import os  # osモジュールをインポート
 
 # あらすじページを処理する関数
 def process_outline_page(outline_url, driver):
@@ -124,7 +125,14 @@ soup = BeautifulSoup(html, 'html.parser')
 # classがitemKyoukaのdivタグを抽出
 divs = soup.find_all('div', class_='itemKyouka')
 
-output_file = 'nhk_for_school_outline_data.csv'
+# 出力ディレクトリを作成
+output_directory = 'dataset_root/data/'
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)  # ディレクトリが存在しない場合は作成
+
+output_file = os.path.join(output_directory, 'nhk_for_school_outline_data.csv')
+#output_file = 'dataset_root/data/nhk_for_school_outline_data.csv'
+
 # 結果をテキストファイルに書き込む
 with open(output_file, 'w', newline='', encoding='utf-8') as file:
     csv_writer = csv.writer(file)
