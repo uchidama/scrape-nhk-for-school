@@ -1,8 +1,8 @@
 # seleniumでNHK for Schoolのプログラム一覧を取得する
 # 
 # 必要なライブラリのインストール
-# pip3 install selenium
-# pip3 install chromedriver-binary-auto
+# pip install selenium
+# pip install chromedriver-binary-auto
 
 import csv
 import chromedriver_binary  # chromedriver-binary-autoをインポート
